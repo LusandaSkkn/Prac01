@@ -95,6 +95,13 @@ int main(void){
 		hours = wiringPiI2CReadReg8 (RTC, HOUR_REGISTER); 
 		mins = wiringPiI2CReadReg8 (RTC, MIN_REGISTER);
 		secs = wiringPiI2CReadReg8 (RTC, SEC_REGISTER);
+		if (secs >= 60 ){
+			secs = 0;
+		}
+		else{
+			secs = secs;
+		}
+		secs = wiringPiI2CReadReg8 (RTC, SEC_REGISTER);
 		
 		//Toggle Seconds LED
 		
