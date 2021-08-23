@@ -66,8 +66,8 @@ void initGPIO(void){
 	}
 	
 	//Attach interrupts to Buttons
-	wiringPiISR(BTNS[0], INT_EDGE_BOTH, hourInc) //Interrupt for hours button 
-	wiringPiISR(BTNS[1], INT_EDGE_BOTH, minInc) //Interrupt for minutes button 
+	wiringPiISR(BTNS[0], INT_EDGE_BOTH, hourInc); //Interrupt for hours button 
+	wiringPiISR(BTNS[1], INT_EDGE_BOTH, minInc); //Interrupt for minutes button 
 
 
 	printf("BTNS done\n");
@@ -92,9 +92,9 @@ int main(void){
 	// Repeat this until we shut down
 	for (;;){
 		//Fetch the time from the RTC
-		hours = wiringPiI2CReadReg8 (RTC, HOUR_REGISTER) 
-		mins = wiringPiI2CReadReg8 (RTC, MIN_REGISTER)
-		secs = wiringPiI2CReadReg8 (RTC, SEC_REGISTER)
+		hours = wiringPiI2CReadReg8 (RTC, HOUR_REGISTER); 
+		mins = wiringPiI2CReadReg8 (RTC, MIN_REGISTER);
+		secs = wiringPiI2CReadReg8 (RTC, SEC_REGISTER);
 		
 		//Toggle Seconds LED
 		
@@ -196,10 +196,10 @@ void hourInc(void){
 		
 		//Increase hours by 1, ensuring not to overflow
 		if (hours < 23){
-			hours += 1
+			hours += 1;
 		}
 		else{
-			hours = 00
+			hours = 00;
 		}
 		//Write hours back to the RTC
 		wiringPiI2CWriteReg8(RTC, HOUR_REGISTER, hours);
@@ -222,10 +222,10 @@ void minInc(void){
 		
 		//Increase minutes by 1, ensuring not to overflow
 		if (mins < 60){
-			mins += 1
+			mins += 1;
 		}
 		else{
-			mins = 00
+			mins = 00;
 		}
 		//Write minutes back to the RTC
 		wiringPiI2CWriteReg8(RTC, MIN_REGISTER, mins);
